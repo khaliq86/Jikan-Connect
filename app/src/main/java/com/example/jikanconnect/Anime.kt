@@ -2,13 +2,15 @@ package com.example.jikanconnect
 
 import com.squareup.moshi.Json
 
-data class Pokemon(
+data class Anime(
     @Json(name = "title")
     val name: String,
     @Json(name = "duration")
     val duration: String,
     @Json(name = "images")
-    val images: Images
+    val images: Images,
+    @Json(name = "synopsis")
+    val synopsis: String
 )
 
 data class Images(
@@ -30,7 +32,7 @@ data class Webp(
     val large_image_url: String
 )
 
-data class PokemonResponse(
+data class AnimeResponse(
     @Json(name = "data")
-    val pokemonList: List<Pokemon>
+    val animeList: List<Anime>
 )

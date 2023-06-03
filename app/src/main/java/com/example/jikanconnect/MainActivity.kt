@@ -19,25 +19,25 @@ class MainActivity : AppCompatActivity() {
 
         val call = apiService.getAnime("13")
 
-        call.enqueue(object : Callback<PokemonResponse> {
+        call.enqueue(object : Callback<AnimeResponse> {
             override fun onResponse(
-                call: Call<PokemonResponse>,
-                response: Response<PokemonResponse>
+                call: Call<AnimeResponse>,
+                response: Response<AnimeResponse>
             ) {
                 if (response.isSuccessful) {
                     Log.d("MainActivity", "Response: ${response.body()}")
-                    val result = response.body()
-                        val pokemonList = result?.pokemonList ?: emptyList()
+                        val result = response.body()
+                        val animeList = result?.animeList ?: emptyList()
                         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
                         recyclerView.layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
-                        recyclerView.adapter = MainAdapter(pokemonList)
+                        recyclerView.adapter = MainAdapter(animeList)
 
                 } else {
                     Log.d("MainActivity", "Error: ${response.message()}")
                 }
             }
 
-            override fun onFailure(call: Call<PokemonResponse>, t: Throwable) {
+            override fun onFailure(call: Call<AnimeResponse>, t: Throwable) {
                 Log.d("MainActivity", "Error: ${t.message}")
             }
         })

@@ -1,13 +1,12 @@
 package com.example.jikanconnect.network
 
-import com.example.jikanconnect.PokemonResponse
+import com.example.jikanconnect.AnimeResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 object ApiClient {
@@ -27,5 +26,5 @@ object ApiClient {
 
 interface ApiService {
     @GET("anime")
-    fun getAnime(@Query("page") page: String): Call<PokemonResponse>
+    fun getAnime(@Query("page") page: String): Call<AnimeResponse>
 }
