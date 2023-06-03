@@ -27,10 +27,14 @@ class MainAdapter(private val pokemonList: List<Pokemon>) : RecyclerView.Adapter
     inner class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nameTextView: TextView = itemView.findViewById(R.id.textView)
         private val durationTextView: TextView = itemView.findViewById(R.id.duration)
+        private val imageView: ImageView = itemView.findViewById(R.id.imageView)
 
         fun bind(pokemon: Pokemon) {
             nameTextView.text = pokemon.name
             durationTextView.text = pokemon.duration
+            imageView.load(pokemon.images.jpg.image_url) {
+                transformations(CircleCropTransformation())
+            }
         }
     }
 }
